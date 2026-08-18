@@ -1,0 +1,28 @@
+{
+  "models": [
+    {
+      "name": "fct_rental_line",
+      "grain": "one row per source rental line",
+      "key": ["rental_line_id"],
+      "history_policy": "customer segment is looked up as of checkout date, or reservation date when checkout is absent"
+    },
+    {
+      "name": "fct_equipment_daily_snapshot",
+      "grain": "one row per snapshot date, branch, and equipment type",
+      "key": ["snapshot_date", "branch_key", "equipment_key"],
+      "history_policy": "snapshots are append-oriented observations and are not restated by default"
+    },
+    {
+      "name": "fct_rental_lifecycle",
+      "grain": "one row per rental",
+      "key": ["rental_id"],
+      "history_policy": "milestone columns are updated until the lifecycle closes"
+    },
+    {
+      "name": "mart_branch_daily",
+      "grain": "one row per checkout date and branch",
+      "key": ["calendar_date", "branch_key"],
+      "history_policy": "rebuild from the governed transaction fact"
+    }
+  ]
+}

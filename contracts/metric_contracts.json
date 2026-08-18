@@ -1,0 +1,40 @@
+{
+  "metrics": [
+    {
+      "name": "net_revenue",
+      "grain": "rental line before aggregation",
+      "numerator": "base charge minus line discount plus line fee adjustments for billable lines",
+      "denominator": null,
+      "exclusions": "cancelled rentals contribute zero",
+      "clock": "checkout date, falling back to no published daily row when checkout is absent",
+      "null_policy": "missing fee total is zero; required price inputs must be non-null"
+    },
+    {
+      "name": "utilization_rate",
+      "grain": "equipment daily snapshot before aggregation",
+      "numerator": "sum of rented units",
+      "denominator": "sum of available units plus rented units",
+      "exclusions": "maintenance units are not serviceable",
+      "clock": "snapshot calendar date",
+      "null_policy": "return null when serviceable units sum to zero"
+    },
+    {
+      "name": "on_time_return_rate",
+      "grain": "rental lifecycle before aggregation",
+      "numerator": "completed rentals returned at or before expected return timestamp",
+      "denominator": "completed rentals with a return outcome",
+      "exclusions": "cancelled and open rentals",
+      "clock": "event timestamps in the synthetic source timezone",
+      "null_policy": "return null when there are no completed rentals"
+    },
+    {
+      "name": "active_rental_count",
+      "grain": "rental lifecycle as of an explicitly supplied timestamp",
+      "numerator": "count of checked-out rentals not yet returned at the as-of timestamp",
+      "denominator": null,
+      "exclusions": "cancelled rentals and reservations not yet checked out",
+      "clock": "caller-supplied as-of timestamp",
+      "null_policy": "missing checkout means not active; missing return means still active after checkout"
+    }
+  ]
+}

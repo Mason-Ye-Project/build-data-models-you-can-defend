@@ -1,0 +1,4 @@
+adjustment_id,rental_line_id,fee_type,amount
+A001,L001,damage,75.00
+A002,L003,late,20.00
+A003,L005,cleaning,10.00

@@ -1,0 +1,6 @@
+equipment_id,capability
+E101,digging
+E101,tracked
+E102,compaction
+E103,power
+E103,portable

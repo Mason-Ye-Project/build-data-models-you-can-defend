@@ -1,0 +1,53 @@
+{
+  "invariants": [
+    "Business process and declared fact grain",
+    "Key roles and history policy",
+    "Measure additivity and metric contracts",
+    "Source reconciliation baselines",
+    "Counterexamples for duplicates, fan-out, and invalid history"
+  ],
+  "platforms": [
+    {
+      "name": "Amazon Redshift",
+      "revisit": "distribution, sort choices, compression, and data movement for the observed workload",
+      "integrity_boundary": "primary and foreign keys are informational, so executable relationship checks remain required",
+      "exercise": "choose and defend a distribution strategy for the rental-line fact",
+      "evidence_label": "documented platform behavior plus illustrative transfer"
+    },
+    {
+      "name": "Google BigQuery",
+      "revisit": "partitioning, clustering, scan patterns, and whether selected nested or repeated fields reduce useful joins",
+      "integrity_boundary": "nested storage must not collapse independent business grains or hide fan-out",
+      "exercise": "compare a capability bridge with a repeated capability field and reconcile both",
+      "evidence_label": "documented platform behavior plus illustrative transfer"
+    },
+    {
+      "name": "Snowflake",
+      "revisit": "pruning, clustering only when justified, and compute isolation",
+      "integrity_boundary": "standard-table primary, foreign, and unique keys are informational; tests maintain integrity",
+      "exercise": "declare relationship metadata and retain grain and relationship tests",
+      "evidence_label": "documented platform behavior plus illustrative transfer"
+    },
+    {
+      "name": "Databricks",
+      "revisit": "bronze, silver, and gold placement, table layout, and catalog boundaries",
+      "integrity_boundary": "medallion layers describe progressive refinement but do not declare fact grain",
+      "exercise": "place raw exports in bronze, typed records in silver, and dimensional marts in gold",
+      "evidence_label": "documented platform behavior plus illustrative transfer"
+    },
+    {
+      "name": "Microsoft Fabric",
+      "revisit": "warehouse schemas, surrogate-key generation, SCD processing, and audit attributes",
+      "integrity_boundary": "warehouse foreign keys may be declared without enforcement, so ETL checks remain required",
+      "exercise": "preserve Type 2 history and add relationship checks around the fact load",
+      "evidence_label": "documented platform behavior plus illustrative transfer"
+    },
+    {
+      "name": "dbt delivery layer",
+      "revisit": "sources, staging, intermediate models, marts, materializations, tests, docs, and contracts",
+      "integrity_boundary": "dbt encodes decisions and checks but cannot supply missing business meaning",
+      "exercise": "map every DuckDB relation and claim into a reviewable dbt-shaped project tree",
+      "evidence_label": "documented workflow pattern plus illustrative transfer"
+    }
+  ]
+}

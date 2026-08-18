@@ -1,0 +1,5 @@
+customer_id,customer_name,customer_segment,effective_from,effective_to
+C001,Arbor Works,Commercial,2025-01-01,2026-06-04
+C001,Arbor Works,Enterprise,2026-06-04,
+C002,Samir Patel,Consumer,2025-01-01,
+C003,Meadow Events,Commercial,2025-01-01,
