@@ -156,7 +156,7 @@ def write_report() -> dict[str, object]:
     write_cloud_map()
     manifest = {
         "project": "Copperline Model Lab",
-        "version": "0.1.0",
+        "version": "1.0.0",
         "generated_at_utc": generated_at,
         "database": DATABASE_PATH.name,
         "models": grain_contracts["models"],

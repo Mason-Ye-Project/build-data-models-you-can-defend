@@ -2,6 +2,10 @@
 
 This is the executable companion for *Build Data Models You Can Defend* by Mason Ye.
 
+Book companion: https://github.com/Mason-Ye-Project/build-data-models-you-can-defend
+
+The book's first-edition reference is release `v1.0.0`. Use that release when you want the exact fixtures, commands, and expected outputs printed in the book. The `main` branch may receive later corrections.
+
 ## Requirements
 
 - CPython 3.12 or newer
